@@ -1,0 +1,47 @@
+<style>
+body {
+    background-color:#141517;
+    color:#fff;
+}
+@keyframes fadeIn {
+    0% {
+        Opacity: 0;
+    }
+
+    100% {
+        Opacity: 1;
+    }
+}
+
+.Golden{
+    user-select:none;
+    animation: fadeIn 10s;
+    position:fixed;
+    z-index:40000000;
+    cursor:pointer;
+    border-radius:100%;
+}
+
+</style>
+<h3>無限ゴールデンクッキー(?)</h3>
+Cを押すと１つ生成できます
+<script>
+document.addEventListener('keydown', function(event) {
+    let key = event.key;
+    if (key === "c") {
+        const pagewidth = document.body.clientWidth;
+        const pageheight = document.documentElement.clientHeight;
+        const GCookie = document.createElement('img');
+        GCookie.style.left = Math.random() * pagewidth+ "px";
+        GCookie.style.top = Math.random() * pageheight + "px";
+        GCookie.className = 'Golden';
+        GCookie.setAttribute('src', 'https://github.com/corei-7/playground/blob/main/goldCookie.png?raw=true');
+        document.body.appendChild(GCookie);
+    }
+});
+document.addEventListener('click', function() {
+      if (event.target.className === "Golden") {
+        event.target.remove();
+      }
+});
+</script>
