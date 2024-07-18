@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Generator</title>
+<style>
+    body {
+        background-color:#1b1c21;
+        color:#dcdee8;
+        text-align: center;
+        margin-top: 50px;
+    }
+    #password {
+        font-size: 16px;
+        margin-bottom: 20px;
+        padding: 10px;
+        width: 80%;
+        max-width: 400px;
+    }
+
+    input,
+    button{
+        color:#dcdee8;
+        background-color:#1b1c21;
+        border: 1px solid #dcdee8;
+    }
+</style>
+</head>
+<body>
+    <h2>Passworld generator</h2>
+    <label for="password-length">length:</label>
+    <input type="number" id="pw-l" value="64" min="32" max="300">
+    <button onclick="generatePassword()">generate</button>
+</div>
+    <br><br>
+    <input type="text" id="password" readonly>
+    <br>
+※参考<br>
+Discord -> Max<b>72</b>length<br>
+Google -> Max<b>100</b>length<br>
+Proton -> Max<b>128</b>length<br>
+X -> Max<b>50</b>length<br>
+    <script>
+        function generatePassword() {
+            let length = document.getElementById("pw-l").value;
+            let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+            let password = "";
+            for (let i = 0; i < length; i++) {
+                let randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset[randomIndex];
+            }
+            document.getElementById("password").value = password;
+        }
+    </script>
+</body>
+</html>
